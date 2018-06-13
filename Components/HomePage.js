@@ -1,50 +1,119 @@
+/**
+ * Created by archibold on 12/06/2018.
+ */
 import React ,{Component} from 'react'
-import {View, Text, StyleSheet, ListView} from 'react-native'
-import {NavigationBar,Heading,Title,Image,Caption} from '@shoutem/ui'
+import {View, Text, StyleSheet, FlatList,ListView,Image,TouchableOpacity} from 'react-native'
+import {NavigationBar,Heading,Title,Caption} from '@shoutem/ui'
 import GroceryMainItem from './grocery_main_item'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Actions } from 'react-native-router-flux';
+import GroceryListDetails from './GroceryListDetails'
+import DashBoardItem from './sharedcomponents/dashboardItem'
 
+import firebaseApp from './firebaseConnector';
+import DashBoard from "./dashboarditem";
 
+export  default class HomePage extends Component{
+    constructor(props){
+        super(props);
 
-export default class HomePage extends Component<Props> {
-    constructor(Props) {
-        super();
-        this.state={name:"", currentlist:"CURRENT LIST"}
     }
     componentWillMount(){
-        this.setState({name:"GROCERY LIST"});
+
 
     }
+
 
     render(){
         return(
             <View style={styles.pagecontainer}>
                 <View style = {styles.navbar}>
                     <NavigationBar
-                        centerComponent={  <Title style={{fontWeight:'bold', marginBottom:10}}>{this.state.name}</Title>}
+                        centerComponent={  <Title style={{fontWeight:'bold', marginBottom:10}}>GROCERY LIST</Title>}
                     />
                 </View>
                 <View style={{height:1, width:'100%', backgroundColor:'#919191'}}></View>
 
-                <View style={{flex:1, width:'100%'}}>
-                    <View style= {{height:20, flexDirection:'row', margin:10, alignItems:'center'}}>
-                              <Icon name="ios-alarm-outline" size={20}/>
-                                <Caption style={{marginLeft:2}}>
-                                    {this.state.currentlist}
-                                </Caption>
-                    </View>
-                    <View style= {{height:'100%', flexDirection:'column' , alignItems:'center', marginTop:100}}>
-                        <Icon name="ios-cart-outline" size={60}/>
-                        <Caption>
-                            NO LIST AVAILABLE NOW
+                <View style={{width:'100%',height:'100%'}}>
+
+
+                    <View style= {{height:20, flexDirection:'row', alignItems:'center',marginTop:10, marginStart:10}}>
+                        <Image source={require('./images/grid.png')} style={{width: 12, height: 12}} />
+                        <Caption style={{marginLeft:10,color:'#038a5e', fontWeight:'bold'}}
+
+                        >
+                           MENU ITEMS
                         </Caption>
                     </View>
+
+
+                    <View style= {{ width:'100%', height:'100%'}}>
+
+                      {/*first row*/}
+                        <View style={styles.dashboardRow}>
+
+                            <View style={{flex:1}}>
+                            <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                  onPress={ () =>{Actions.settings({navtitle:"CURRENT LIST",})}}>
+                            <DashBoardItem  imagelink = {require('./images/list.png')} command="Current List"/>
+                            </TouchableOpacity>
+                            </View>
+
+                            <View style={{flex:1}}>
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                                  onPress={ () =>{Actions.settings({navtitle:"PAST LIST"})}}>
+                                    <DashBoardItem  imagelink = {require('./images/history.png')} command="Past List"/>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
+
+                        {/*second Row*/}
+                        <View style={styles.dashboardRow}>
+
+                            <View style={{flex:1}}>
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                                  onPress={ () =>{Actions.settings({navtitle:"LIST STATISTICS",})}}>
+                                    <DashBoardItem  imagelink = {require('./images/diagram.png')} command="List Statistics"/>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={{flex:1}}>
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                                  onPress={ () =>{Actions.settings({navtitle:"DELETED LIST"})}}>
+                                    <DashBoardItem  imagelink = {require('./images/file.png')} command="Deleted List"/>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
+
+                        {/*third row*/}
+                        <View style={styles.dashboardRow}>
+
+                            <View style={{flex:1}}>
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                                  onPress={ () =>{Actions.settings({navtitle:"LIST STATISTICS",})}}>
+                                    <DashBoardItem  imagelink = {require('./images/diagram.png')} command="List Statistics"/>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={{flex:1}}>
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                                  onPress={ () =>{Actions.settings({navtitle:"DELETED LIST"})}}>
+                                    <DashBoardItem  imagelink = {require('./images/file.png')} command="Deleted List"/>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
+
+                    </View>
+
                 </View>
             </View>
         )
     }
-
 }
+
 const styles = StyleSheet.create({
     pagecontainer:{
         flex:10,
@@ -55,10 +124,15 @@ const styles = StyleSheet.create({
         height:'10%',
         backgroundColor:'#fffffc',
         borderBottomColor:'#838383',
-        borderBottomWidth:5
+        borderBottomWidth:2
     },
-    titleText:{
+    dashboardRow:{
+        flexDirection:'row',
+        height:150,
+        backgroundColor:'white',
+        padding:5,
 
-    }
+    },
+
 
 });

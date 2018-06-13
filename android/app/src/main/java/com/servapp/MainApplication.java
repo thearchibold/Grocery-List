@@ -3,7 +3,7 @@ package com.servapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.github.orhan.bottomnavigation.BottomNavigationPackage;
+
 import com.imagepicker.ImagePickerPackage;
 import com.reactnative.photoview.PhotoViewPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -27,8 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new BottomNavigationPackage(),
+            new MainReactPackage(),
+
             new ImagePickerPackage(),
             new PhotoViewPackage(),
             new LinearGradientPackage(),
