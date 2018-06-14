@@ -20,6 +20,8 @@ import TabNavigator from 'react-native-tab-navigator';
 import {Router , Scene, Stack} from 'react-native-router-flux'
 import Settings from './Components/Settings'
 import GroceryListDetails from './Components/GroceryListDetails'
+import GroceryListHeader from './Components/GroceryListHeader'
+
 
 export default class App extends Component<Props> {
   constructor(props){
@@ -74,6 +76,7 @@ export default class App extends Component<Props> {
                 key="root">
                 <Scene initial={true} key="home" component={Tab} />
                 <Scene  key="settings" component={GroceryListDetails} />
+                <Scene  key="details" component={GroceryListHeader} />
             </Stack>
         </Router>
         );

@@ -2,7 +2,7 @@
  * Created by archibold on 12/06/2018.
  */
 import React ,{Component} from 'react'
-import {View, Text, StyleSheet, FlatList,ListView,Image,TouchableOpacity} from 'react-native'
+import {View, Text, StyleSheet, FlatList,ListView,Image,TouchableOpacity,ScrollView} from 'react-native'
 import {NavigationBar,Heading,Title,Caption} from '@shoutem/ui'
 import GroceryMainItem from './grocery_main_item'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -29,10 +29,14 @@ export  default class HomePage extends Component{
             <View style={styles.pagecontainer}>
                 <View style = {styles.navbar}>
                     <NavigationBar
-                        centerComponent={  <Title style={{fontWeight:'bold', marginBottom:10}}>GROCERY LIST</Title>}
+                        rightComponent={ <Image source={require('./images/shoppinggroceries.png')} style={{height:25, width:25,marginBottom:10, marginRight:10}}/>}
+
+                        centerComponent={
+                                    <Title style={{fontWeight:'bold', marginBottom:10}}>GROCERY LIST</Title>
+                            }
                     />
                 </View>
-                <View style={{height:1, width:'100%', backgroundColor:'#919191'}}></View>
+                <View style={{height:1, width:'100%', backgroundColor:'#bebebe'}}/>
 
                 <View style={{width:'100%',height:'100%'}}>
 
@@ -47,8 +51,9 @@ export  default class HomePage extends Component{
                     </View>
 
 
-                    <View style= {{ width:'100%', height:'100%'}}>
 
+                    <View style= {{ width:'100%', height:'100%', paddingBottom:80}}>
+                        <ScrollView>
                       {/*first row*/}
                         <View style={styles.dashboardRow}>
 
@@ -87,7 +92,7 @@ export  default class HomePage extends Component{
 
                         </View>
 
-                        {/*third row*/}
+
                         <View style={styles.dashboardRow}>
 
                             <View style={{flex:1}}>
@@ -106,6 +111,7 @@ export  default class HomePage extends Component{
 
                         </View>
 
+                        </ScrollView>
                     </View>
 
                 </View>
@@ -130,7 +136,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         height:150,
         backgroundColor:'white',
-        padding:5,
+        paddingLeft:20,
+        paddingRight:20
 
     },
 

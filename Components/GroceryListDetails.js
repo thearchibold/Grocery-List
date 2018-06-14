@@ -7,6 +7,7 @@ import firebaseApp from './firebaseConnector';
 import SpinnerLoader from './sharedcomponents/loadingSpinner';
 import {NavigationBar,Heading,Title,Caption} from '@shoutem/ui'
 import { Actions } from 'react-native-router-flux';
+import GroceryListHeader from './GroceryListHeader'
 
 
 
@@ -76,7 +77,7 @@ export default class GroceryListDetails extends  Component{
         }
 
         return(
-            <View style={{flex:1,flexDirection:'column'}}>
+            <View style={{flex:1,flexDirection:'column', backgroundColor:'white'}}>
                 <View style={css.navbar}>
                     <NavigationBar
                         hasHistory={true}
@@ -89,32 +90,38 @@ export default class GroceryListDetails extends  Component{
                     />
                 </View>
 
-                <View>
                 <FlatList
 
                     data={this.state.listArray}
                     keyExtractor={item => item.lid}
                     renderItem={({item}) =>
 
-                        <View style={{margin:10}} onPress = {()=>{alert(item.lid)}}>
-                            <Text>{item.title}</Text>
+                    <TouchableOpacity activeOpacity={0.5} onPress={
+                        ()=>{
+                            Actions.details({listid:item.lid, listname:item.title, listdate:item.date})
+                        }
+                    }>
+                        <View style={{margin:10}} >
+                            <Text style = {{fontWeight:'bold'}}>{item.title}</Text>
                             <Text>{item.date}</Text>
                         </View>
+                    </TouchableOpacity>
                     }
 
-                    renderSeparator = {()=>{
+                    ItemSeparatorComponent = {()=>{
                     return (
                     <View
                     style={{
                         height: 1,
-                        width: "86%",
-                        backgroundColor: "#d03026",
-                        marginLeft: "14%"
+                        width: "100%",
+                        backgroundColor: "#bbb8b8",
+                        marginLeft: "4%",
+                        marginRight:'4%'
                     }}/>
                     );}}
 
                 />
-                </View>
+
             </View>
         )
     }

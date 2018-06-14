@@ -26,7 +26,7 @@ const css = StyleSheet.create({
     dashboardItem:{
         flex:1,
         height:'100%',
-        borderColor:'#7e7c7e',
+        borderColor:'#b1afb1',
         borderWidth:1,
         margin:5,
         justifyContent:'center',
