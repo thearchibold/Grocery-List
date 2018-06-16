@@ -29,10 +29,8 @@ export  default class HomePage extends Component{
             <View style={styles.pagecontainer}>
                 <View style = {styles.navbar}>
                     <NavigationBar
-                        rightComponent={ <Image source={require('./images/shoppinggroceries.png')} style={{height:25, width:25,marginBottom:10, marginRight:10}}/>}
-
                         centerComponent={
-                                    <Title style={{fontWeight:'bold', marginBottom:10}}>GROCERY LIST</Title>
+                                    <Title style={{fontFamily:'monospace', fontWeight:'bold', marginBottom:10, color:'#034e36'}}>GROCERY LIST</Title>
                             }
                     />
                 </View>
@@ -58,7 +56,7 @@ export  default class HomePage extends Component{
                         <View style={styles.dashboardRow}>
 
                             <View style={{flex:1}}>
-                            <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                            <TouchableOpacity activeOpacity={0.5} style={{flex:1, margin:15}}
                                   onPress={ () =>{Actions.settings({navtitle:"CURRENT LIST",})}}>
                             <DashBoardItem  imagelink = {require('./images/list.png')} command="Current List"/>
                             </TouchableOpacity>
@@ -84,7 +82,7 @@ export  default class HomePage extends Component{
                             </View>
 
                             <View style={{flex:1}}>
-                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1, margin:15}}
                                                   onPress={ () =>{Actions.settings({navtitle:"DELETED LIST"})}}>
                                     <DashBoardItem  imagelink = {require('./images/file.png')} command="Deleted List"/>
                                 </TouchableOpacity>
@@ -96,16 +94,16 @@ export  default class HomePage extends Component{
                         <View style={styles.dashboardRow}>
 
                             <View style={{flex:1}}>
-                                <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
-                                                  onPress={ () =>{Actions.settings({navtitle:"LIST STATISTICS",})}}>
-                                    <DashBoardItem  imagelink = {require('./images/diagram.png')} command="List Statistics"/>
+                                <TouchableOpacity activeOpacity={0.5} style={{flex:1,margin:15}}
+                                                  onPress={ () =>{Actions.settings({navtitle:"ANOTHER CATEGORY",})}}>
+                                    <DashBoardItem  imagelink = {require('./images/diagram.png')} command="Another Category"/>
                                 </TouchableOpacity>
                             </View>
 
                             <View style={{flex:1}}>
                                 <TouchableOpacity activeOpacity={0.5} style={{flex:1}}
-                                                  onPress={ () =>{Actions.settings({navtitle:"DELETED LIST"})}}>
-                                    <DashBoardItem  imagelink = {require('./images/file.png')} command="Deleted List"/>
+                                                  onPress={ () =>{Actions.settings({navtitle:"EXTRA CATEGORY"})}}>
+                                    <DashBoardItem  imagelink = {require('./images/file.png')} command="Extra Category"/>
                                 </TouchableOpacity>
                             </View>
 

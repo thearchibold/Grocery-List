@@ -69,7 +69,9 @@ export default  class CreateList extends Component{
 
         return(
             <View style={css.container}>
+
                 <View style={css.navHeader}>
+
                     <View style={{flex:8.5}}>
                         <TextInput
                             value={this.state.listitem}
@@ -78,6 +80,7 @@ export default  class CreateList extends Component{
                             blurOnSubmit={true}
                             placeholder="Add item"
                             onChangeText={(value)=>this.setState({listitem:value})}
+                            windowSoftInputMode="adjustPan"
                         />
                     </View>
                     <View style={{flex:1.5, padding:10}}>
@@ -118,17 +121,12 @@ export default  class CreateList extends Component{
                         borderBottomColor:'#dce0df'}}>
                         <TextInput
                             style={{flex:9, maginLeft:6}}
-                                underlineColorAndroid='#fff'
+                               underlineColorAndroid='#fff'
                                placeholder='Name of the list'
                                value={this.state.listname}
+                               windowSoftInputMode="adjustPan"
                                onChangeText={(value)=>{this.setState({listname:value})}}
                         />
-                        <Icon name='ios-folder-outline'
-                              size={25}
-                              style={{flex:1,
-                                  justifyContent:'center',
-                                  position:'relative',
-                                  alignSelf:'center'}}/>
                     </View>
                 </View>
 
@@ -159,7 +157,7 @@ export default  class CreateList extends Component{
                 <View style={{flexDirection:'row', justifyContent:'space-between',alignItems:'center', margin:10}}>
                     <Caption>ITEMS IN LIST</Caption>
 
-                    <TouchableOpacity activeOpacity={0.4}  onPress={()=> {
+                    <TouchableOpacity style = {{width:80, height:40}} activeOpacity={0.4}  onPress={()=> {
 
                            if(this.state.listname === null){
                          alert('Please give your list a name')
@@ -181,7 +179,7 @@ export default  class CreateList extends Component{
                          }
                     }
                     }>
-                   <CustomButton buttontext="SUBMIT"/>
+                   <CustomButton  buttontext="SUBMIT"/>
                     </TouchableOpacity>
                 </View>
                 <View   style={{paddingLeft:10}}>

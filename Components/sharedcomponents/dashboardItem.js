@@ -26,7 +26,7 @@ const css = StyleSheet.create({
     dashboardItem:{
         flex:1,
         height:'100%',
-        borderColor:'#b1afb1',
+        borderColor:'#e2e0e2',
         borderWidth:1,
         margin:5,
         justifyContent:'center',
@@ -35,7 +35,8 @@ const css = StyleSheet.create({
     },
     commandStyle:{
         fontWeight:'bold',
-        marginTop:5
+        marginTop:5,
+        color:'#064f3b'
     }
 
 });
